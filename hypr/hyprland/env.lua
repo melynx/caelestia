@@ -21,3 +21,10 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
 -- Others
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
+
+-- Input method (fcitx5: Chinese Pinyin / Japanese Mozc). GTK_IM_MODULE was
+-- the one missing piece, so GTK/XWayland apps (e.g. Firefox) accept CJK input.
+hl.env("GTK_IM_MODULE", "fcitx")
+hl.env("QT_IM_MODULE", "fcitx")
+hl.env("SDL_IM_MODULE", "fcitx")
+hl.env("XMODIFIERS", "@im=fcitx")

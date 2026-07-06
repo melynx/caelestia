@@ -2,13 +2,18 @@ local vars = require("variables")
 local fn   = require("hyprland.functions")
 
 hl.on("hyprland.start", function()
-    -- Keyring and auth
-    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+    -- Auth agent (polkit). Secret Service is provided by KeePassXC, not gnome-keyring.
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+
+    -- KeePassXC serves the freedesktop Secret Service (org.freedesktop.secrets)
+    hl.exec_cmd("keepassxc")
 
     -- Clipboard history
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
+    -- Input method (Chinese Pinyin / Japanese Mozc)
+    hl.exec_cmd("fcitx5 -d --replace")
 
     -- Auto delete trash 30 days old
     hl.exec_cmd("trash-empty 30")
