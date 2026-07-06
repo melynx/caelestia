@@ -37,8 +37,8 @@ return {
     -- Gaps
     workspaceGaps              = 20,
     windowGapsIn               = 5,
-    windowGapsOut              = 10,
-    singleWindowGapsOut        = 20,
+    windowGapsOut              = 5,
+    singleWindowGapsOut        = 10,
 
     -- Window styling
     windowOpacity              = 0.95,
@@ -52,7 +52,9 @@ return {
     volumeMax                  = 100,
     cursorTheme                = "sweet-cursors",
     cursorSize                 = 24,
-    sleepGestureCmd            = "systemctl suspend-then-hibernate",
+    -- Plain suspend: hibernate is disabled by forced kernel lockdown (integrity),
+    -- so suspend-then-hibernate fails outright. s2idle suspend/resume is verified working.
+    sleepGestureCmd            = "systemctl suspend",
 
     ------------------
     ---- KEYBINDS ----
