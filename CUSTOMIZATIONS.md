@@ -13,9 +13,8 @@ Deployed on **Gentoo** via the caelestia CLI (see *Deployment* below). Written
 
 ## Customizations on the `czl` branch
 
-Only three managed files are changed from upstream. Each is a deliberate,
-portable preference (not machine-specific — machine-specific config stays in the
-host's `~/.config/caelestia/` overlay, see *Not in this repo*).
+Each change is a deliberate, portable preference. Machine-specific config
+stays in the host's `~/.config/caelestia/` overlay; see *Not in this repo*.
 
 ### 1. KeePassXC as the Secret Service — `hypr/hyprland/execs.lua`
 - Dropped the `gnome-keyring-daemon --start --components=secrets` autostart.
@@ -38,6 +37,16 @@ host's `~/.config/caelestia/` overlay, see *Not in this repo*).
 - **Why suspend:** hibernate is disabled by a forced kernel lockdown (integrity),
   so `suspend-then-hibernate` fails outright; plain s2idle suspend/resume is
   verified working.
+
+### 4. Ghostty + Zsh→Fish shell boundary
+- Replaced the Foot component and references with Ghostty, including Hyprland
+  rules, the terminal keybind target, and Thunar's "Open Terminal Here" action.
+- Added the portable Ghostty font, padding, and transparency configuration.
+- The account shell remains Zsh. `zsh/zshrc` replaces only interactive sessions
+  with Fish and exports `SHELL=/usr/bin/fish`; non-interactive SSH commands keep
+  Zsh. Set `ZSH_NO_FISH=1` to open native interactive Zsh.
+- **Why:** Fish remains the interactive environment, while Bourne-style remote
+  automation and programs that consult the login shell see Zsh.
 
 ---
 
@@ -62,8 +71,8 @@ so they were excluded to keep the fork clean:
   (per-machine display/workspace layout).
 - Generated: `hypr/scheme/current.lua`, fish `conf.d/`, `completions/`,
   `fish_variables`.
-- Outside dots entirely: fontconfig CJK (AR PL UKai CN), ghostty config, howdy
-  face-auth, KeePassXC D-Bus shadow.
+- Outside dots entirely: fontconfig CJK (AR PL UKai CN), howdy face-auth,
+  KeePassXC D-Bus shadow.
 
 ---
 
@@ -107,7 +116,8 @@ git push --force-with-lease origin czl
 caelestia update
 ```
 
-Conflicts, if any, will only be in `execs.lua`, `env.lua`, `variables.lua`.
+Likely conflicts are limited to the customized Hyprland files, manifest,
+Ghostty/Zsh components, Thunar action, and their documentation.
 
 ---
 

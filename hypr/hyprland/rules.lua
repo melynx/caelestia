@@ -33,7 +33,7 @@ hl.window_rule({ match = { tag = "float" }, float = true })
 hl.window_rule({
     match = {
         class =
-        "foot|equibop|org.quickshell|imv|swappy|krita|gimp|inkscape|darktable|resolve|kdenlive|shotcut|blender|godot|(steam_app_(default|[0-9]+))|gamescope",
+        "com.mitchellh.ghostty|equibop|org.quickshell|imv|swappy|krita|gimp|inkscape|darktable|resolve|kdenlive|shotcut|blender|godot|(steam_app_(default|[0-9]+))|gamescope",
     },
     tag   = "+opaque_app",
 })
@@ -41,7 +41,7 @@ hl.window_rule({
 hl.window_rule({ match = { tag = "opaque_app" }, opaque = true })
 
 -- Sized & Centered Floaters
-hl.window_rule({ match = { class = "foot", title = "nmtui" }, tag = "+float_60_70" })
+hl.window_rule({ match = { class = "com.mitchellh.ghostty", title = "nmtui" }, tag = "+float_60_70" })
 hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol|yad-icon-browser" }, tag = "+float_60_70" })
 hl.window_rule({ match = { class = "org.gnome.Settings" }, tag = "+float_70_80" })
 hl.window_rule({ match = { class = "nwg-look" }, tag = "+float_50_60" })

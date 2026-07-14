@@ -6,7 +6,7 @@ return {
     ------------------
 
     -- Apps
-    terminal                   = "foot",
+    terminal                   = "ghostty",
     browser                    = "firefox",
     editor                     = "codium",
     fileExplorer               = "thunar",

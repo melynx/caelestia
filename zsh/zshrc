@@ -1,0 +1,6 @@
+# Keep Zsh as the account/non-interactive shell while using Fish interactively.
+# Set ZSH_NO_FISH=1 to request a native interactive Zsh session.
+if [[ -o interactive && -x /usr/bin/fish && -z ${ZSH_NO_FISH:-} ]]; then
+    export SHELL=/usr/bin/fish
+    exec /usr/bin/fish
+fi

@@ -1,0 +1,20 @@
+# Ghostty configuration
+# Nerd font so powerline/icon glyphs render instead of tofu.
+font-family = JetBrainsMono Nerd Font
+# Chinese Han in AR PL UKai CN (Kaiti) to match browser/GTK/Qt rendering.
+font-family = AR PL UKai CN
+# Noto CJK backstops for Japanese kana, Korean hangul, and missing Han glyphs.
+font-family = Noto Sans Mono CJK SC
+font-family = Noto Sans Mono CJK JP
+# Media and technical symbols that JetBrainsMono Nerd Font does not contain.
+font-family = Noto Sans Symbols 2
+font-size = 12
+
+window-padding-x = 14
+window-padding-y = 10
+window-padding-balance = true
+
+# Inherit the account shell. Interactive Zsh hands off to Fish via ~/.zshrc,
+# while non-interactive commands continue to use the account's Zsh shell.
+background-opacity = 0.78
+background-opacity-cells = true

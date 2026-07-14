@@ -70,7 +70,7 @@ Here's a list of useful keybinds though:
 -   `Super` - open launcher
 -   `Super` + `#` - switch to workspace `#`
 -   `Super` `Alt` + `#` - move window to workspace `#`
--   `Super` + `T` - open terminal (foot)
+-   `Super` + `T` - open terminal (Ghostty)
 -   `Super` + `W` - open browser (zen)
 -   `Super` + `C` - open IDE (vscodium)
 -   `Super` + `S` - toggle special workspace or close current special workspace
