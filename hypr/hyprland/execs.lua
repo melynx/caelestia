@@ -42,7 +42,7 @@ hl.on("window.title", function(win)
     }
     local pip = fn.move_actions(win) or {}
 
-    fn.resizer(win, "Bitwarden", 20, 54, d, true)
+    fn.resizer(win, "Bitwarden", 20, 54, d, true, "class")
     fn.resizer(win, "Picture[- ]in[- ][Pp]icture", 0, 0, pip, false)
 end)
 
@@ -53,6 +53,6 @@ hl.on("window.open", function(win)
     }
     local pip = fn.move_actions(win) or {}
 
-    fn.resizer(win, "Bitwarden", 20, 54, d, true)
+    fn.resizer(win, "Bitwarden", 20, 54, d, true, "class")
     fn.resizer(win, "Picture[- ]in[- ][Pp]icture", 0, 0, pip, false)
 end)
