@@ -4,7 +4,7 @@ Fork of [`caelestia-dots/caelestia`](https://github.com/caelestia-dots/caelestia
 maintained at `github.com/melynx/caelestia`.
 
 - **`main`** mirrors upstream `main` (kept clean, fast-forward only).
-- **`czl`** holds the personal customizations below, rebased on top of `main`.
+- **`czl`** holds the personal customizations below, with upstream merged in.
 
 Deployed on **Gentoo** via the caelestia CLI (see *Deployment* below). Written
 2026-07-07.
@@ -26,10 +26,9 @@ stays in the host's `~/.config/caelestia/` overlay; see *Not in this repo*.
 
 ### 2. fcitx5 CJK input — `hypr/hyprland/execs.lua` + `hypr/hyprland/env.lua`
 - `execs.lua`: autostart `fcitx5 -d --replace`.
-- `env.lua`: `GTK_IM_MODULE`/`QT_IM_MODULE`/`SDL_IM_MODULE = fcitx`,
-  `XMODIFIERS = @im=fcitx`.
-- **Why:** Chinese Pinyin + Japanese Mozc. `GTK_IM_MODULE` was the missing piece
-  that lets GTK/XWayland apps (e.g. Firefox) accept CJK input.
+- `env.lua`: `QT_IM_MODULE`/`SDL_IM_MODULE = fcitx`, `XMODIFIERS = @im=fcitx`.
+  `GTK_IM_MODULE` is left unset so GTK apps use Wayland's native text-input.
+- **Why:** Chinese Pinyin + Japanese Mozc.
 
 ### 3. Gaps + suspend — `hypr/variables.lua`
 - `windowGapsOut` 10 → 5, `singleWindowGapsOut` 20 → 10 (tighter gaps).
@@ -58,10 +57,10 @@ so they were excluded to keep the fork clean:
 - **`btop/btop.conf`** — differs only because btop 1.4.7 rewrote the config with
   new *default* keys (`disable_presets`, `disable_mouse`, `apple` GPU vendor, …);
   source was 1.4.6. No values were actually changed. Pure version drift.
-- **`execs.lua` `fn.resizer(..., "class")` arg** — upstream refactored `resizer`
-  from a 7-param signature to 6-param `(window, pattern, x, y, actions, exact)`.
-  The extra `"class"` in the deployed copy is drift from the older commit it was
-  hand-copied from, not an edit.
+- **Resizer and Spotify fixes** — formerly carried here, now upstream
+  (caelestia-dots/caelestia#459 and #465). Upstream's later rules refactor
+  dropped the `^…$` anchors on the Spotify `initial_title` match; that is
+  equivalent, because Hyprland rule regexes use `RE2::FullMatch`.
 
 ### Not in this repo at all (host-level, per-machine)
 - Update-safe overlay in `~/.config/caelestia/`: `hypr-user.lua`, `hypr-vars.lua`,
@@ -110,8 +109,8 @@ overlay (those files aren't in this repo).
 ```sh
 git fetch upstream
 git checkout main && git merge --ff-only upstream/main && git push origin main
-git checkout czl  && git rebase main            # resolve conflicts in the 3 files
-git push --force-with-lease origin czl
+git checkout czl  && git merge main            # resolve conflicts in the customized files
+git push origin czl
 # then on the host:
 caelestia update
 ```
