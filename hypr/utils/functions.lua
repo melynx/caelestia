@@ -111,8 +111,9 @@ local function default_config()
         sysmon = {
             btop = {
                 enable  = true,
-                match   = { { class = "btop", title = "btop", workspace = { name = "special:sysmon" } } },
-                command = { "foot", "-a", "btop", "-T", "btop", "fish", "-C", "exec btop" },
+                match   = { { class = "caelestia.btop", title = "btop", workspace = { name = "special:sysmon" } } },
+                -- Ghostty's class must be a valid GTK application ID, so it needs a dot
+                command = { "ghostty", "--class=caelestia.btop", "--title=btop", "-e", "fish", "-C", "exec btop" },
             },
         },
         todo = {

@@ -40,6 +40,8 @@ stays in the host's `~/.config/caelestia/` overlay; see *Not in this repo*.
 ### 4. Ghostty + Zsh→Fish shell boundary
 - Replaced the Foot component and references with Ghostty, including Hyprland
   rules, the terminal keybind target, and Thunar's "Open Terminal Here" action.
+- The system monitor toggle (`hypr/utils/functions.lua`) launches btop in
+  Ghostty as class `caelestia.btop`; Ghostty rejects a dotless class like `btop`.
 - Added the portable Ghostty font, padding, and transparency configuration.
 - The account shell remains Zsh. `zsh/zshrc` replaces only interactive sessions
   with Fish and exports `SHELL=/usr/bin/fish`; non-interactive SSH commands keep

@@ -62,6 +62,7 @@ hl.window_rule({
 -- Opaque apps
 tagged_rule(opaque_tag, {
     "com.mitchellh.ghostty",         -- Terminal
+    "caelestia.btop",                -- System monitor (Ghostty)
     "equibop",                       -- Discord client
     "org.quickshell",                -- Quickshell
     "feh|imv|swappy",                -- Image viewers
@@ -138,7 +139,7 @@ tagged_rule(xwl_popup_tag, {
 
 
 -- Special workspaces
-tagged_rule(system_monitor_tag, { "btop" }, "class")
+tagged_rule(system_monitor_tag, { "btop|caelestia.btop" }, "class")
 tagged_rule(music_player_tag, {
     "feishin|Supersonic|Plexamp",                                  -- Self hosted
     "Spotify",                                                     -- Spotify
